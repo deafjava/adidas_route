@@ -1,0 +1,26 @@
+flyway:
+  enabled: true
+
+spring:
+  profiles: dev, default
+  datasource:
+    url: jdbc:mysql://10.0.0.109:3319/od?verifyServerCertificate\\=false&useSSL\\=true&characterEncoding\\=UTF-8
+    password: d4t4b4s3
+    username: root
+logging:
+  level:
+    root: INFO
+
+---
+
+flyway:
+  enabled: true
+
+spring:
+  profiles: test
+  jpa:
+    hibernate:
+      ddl-auto: none
+  datasource:
+    url: jdbc:h2:mem:test;MODE=MySQL;DB_CLOSE_ON_EXIT=FALSE
+    driverClassName: org.h2.Driver
