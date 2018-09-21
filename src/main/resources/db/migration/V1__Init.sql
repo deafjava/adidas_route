@@ -29,8 +29,8 @@ CREATE TABLE route (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     origin_city_id INT UNSIGNED NOT NULL,
     destiny_city_id INT UNSIGNED NOT NULL,
-    departure_time TIMESTAMP NOT NULL,
-    arrival_time TIMESTAMP NOT NULL,
+    departure_time TIME NOT NULL,
+    arrival_time TIME NOT NULL,
     CONSTRAINT roc_fk
     FOREIGN KEY(origin_city_id)
     REFERENCES city(id),

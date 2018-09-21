@@ -1,5 +1,6 @@
-package domain;
+package com.adidas.trip.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -11,6 +12,7 @@ import javax.persistence.*;
 public class City {
 
     @Id
+    @JsonIgnore
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -20,6 +22,6 @@ public class City {
     private String name;
 
     @JoinColumn(name = "state_id")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private State state;
 }

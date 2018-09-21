@@ -1,15 +1,14 @@
 package com.adidas.trip.service;
 
-import com.adidas.trip.exception.DestinyCityNotFoundException;
-import com.adidas.trip.exception.OriginCityNotFoundException;
+import com.adidas.trip.domain.City;
+import com.adidas.trip.domain.Route;
 import com.adidas.trip.exception.RouteNotFoundException;
-import domain.City;
-import domain.Route;
+import com.adidas.trip.repository.CityRepository;
+import com.adidas.trip.repository.RouteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.CityRepository;
-import repository.RouteRepository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,17 +22,19 @@ public class RouteServiceImpl implements RouteService {
     private CityRepository cityRepository;
 
     @Override
-    public List<Route> findAllByOriginCity(Optional<String> iataOpt) {
+    @Transactional
+    public List<Route> findAllByOriginCity(String iata) {
 
-        Optional<City> cityOpt = cityRepository.findByIata(iataOpt.orElseThrow(OriginCityNotFoundException::new));
+        Optional<City> cityOpt = cityRepository.findByIata(iata);
 
         return routeRepository.findAllByOriginCity(cityOpt.orElseThrow(RouteNotFoundException::new));
     }
 
     @Override
-    public List<Route> findAllByDestinyCity(Optional<String> iataOpt) {
+    @Transactional
+    public List<Route> findAllByDestinyCity(String iata) {
 
-        Optional<City> cityOpt = cityRepository.findByIata(iataOpt.orElseThrow(DestinyCityNotFoundException::new));
+        Optional<City> cityOpt = cityRepository.findByIata(iata);
 
         return routeRepository.findAllByDestinyCity(cityOpt.orElseThrow(RouteNotFoundException::new));
     }

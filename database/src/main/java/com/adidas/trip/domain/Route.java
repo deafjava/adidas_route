@@ -1,12 +1,12 @@
-package domain;
+package com.adidas.trip.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import java.time.LocalTime;
-import java.util.Date;
 
 @Entity
 @Data
@@ -14,6 +14,7 @@ import java.util.Date;
 public class Route {
 
     @Id
+    @JsonIgnore
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 

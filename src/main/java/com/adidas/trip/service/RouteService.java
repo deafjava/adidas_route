@@ -1,13 +1,12 @@
 package com.adidas.trip.service;
 
-import domain.Route;
+import com.adidas.trip.domain.Route;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface RouteService {
 
-    List<Route> findAllByOriginCity(Optional<String> iataOpt);
+    List<Route> findAllByOriginCity(String iata);
 
-    List<Route> findAllByDestinyCity(Optional<String> iataOpt);
+    List<Route> findAllByDestinyCity(String iata);
 }
