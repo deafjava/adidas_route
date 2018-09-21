@@ -14,11 +14,12 @@ public class City {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true)
+    private String iata;
+
     private String name;
 
-    private String uniquePublicName;
-
     @JoinColumn(name = "state_id")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private State state;
 }

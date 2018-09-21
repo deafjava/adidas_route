@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
+import java.time.LocalTime;
 import java.util.Date;
 
 @Entity
@@ -24,11 +25,9 @@ public class Route {
     @ManyToOne(fetch = FetchType.EAGER)
     private City destinyCity;
 
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "departure_time")
-    private Date departureTime;
+    private LocalTime departureTime;
 
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "arrival_time")
-    private Date arrivalTime;
+    private LocalTime arrivalTime;
 }
