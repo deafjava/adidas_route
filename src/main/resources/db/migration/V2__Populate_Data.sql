@@ -17,16 +17,16 @@ INSERT INTO state (name, iso_code, country_id) VALUES
     ('Bavaria', 'BY', 6),
     ('Lisboa', 'LI', 2);
 
-INSERT INTO city (name, state_id, iata) VALUES
-    ('Zaragoza', 1, 'ZAZ'),
-    ('Madrid', 2, 'MAD'),
-    ('Barcelona', 3, 'BCN'),
-    ('London', 4, 'LHR'),
-    ('Dallas', 5, 'DFW'),
-    ('Toronto', 6, 'YYZ'),
-    ('Frankfurt', 7, 'FRA'),
-    ('Munich', 8, 'MUC'),
-    ('Lisboa', 9, 'LIS');
+INSERT INTO city (name, state_id, iata, gmt) VALUES
+    ('Zaragoza', 1, 'ZAZ', 1),
+    ('Madrid', 2, 'MAD', 1),
+    ('Barcelona', 3, 'BCN', 1),
+    ('London', 4, 'LHR', 0),
+    ('Dallas', 5, 'DFW', -6),
+    ('Toronto', 6, 'YYZ', -5),
+    ('Frankfurt', 7, 'FRA', 1),
+    ('Munich', 8, 'MUC', 1),
+    ('Lisboa', 9, 'LIS', 0);
 
 INSERT INTO route (origin_city_id, destiny_city_id, departure_time, arrival_time) VALUES
     (1, 9, '10:23:34', '11:30:10'),
@@ -43,5 +43,23 @@ INSERT INTO route (origin_city_id, destiny_city_id, departure_time, arrival_time
     (8, 4, '21:08:19', '22:39:10'),
     (8, 4, '12:23:19', '13:57:00'),
     (8, 4, '09:13:54', '10:44:31'),
-    (4, 9, '23:53:24', '01:10:09');
+    (4, 9, '23:53:24', '01:10:09'),
+    (1, 2, '03:55:08', '04:35:11'),
+    (2, 9, '06:00:03', '07:14:10'),
+    (2, 3, '10:33:02', '11:29:41'),
+    (3, 8, '12:30:00', '14:03:07'),
+    (8, 7, '15:42:40', '16:58:37'),
+    (2, 3, '03:13:56', '04:13:49'),
+    (3, 8, '07:17:22', '08:50:29'),
+    (8, 7, '09:55:41', '11:08:51'),
+    (2, 8, '09:13:13', '11:12:46'),
+    (2, 7, '20:31:07', '22:34:02'),
+    (2, 7, '10:33:02', '16:58:37'),
+    (2, 7, '03:13:56', '11:08:51'),
+    (2, 5, '10:23:34', '02:17:43');
+
+INSERT INTO connections (full_route_id, connection_route_id) VALUES
+    (28, 5), (28, 7),
+    (26, 18), (26, 19), (26, 20),
+    (27, 21), (27, 22), (27, 23);
 

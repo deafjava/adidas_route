@@ -29,13 +29,4 @@ public class RouteServiceImpl implements RouteService {
 
         return routeRepository.findAllByOriginCity(cityOpt.orElseThrow(RouteNotFoundException::new));
     }
-
-    @Override
-    @Transactional
-    public List<Route> findAllByDestinyCity(String iata) {
-
-        Optional<City> cityOpt = cityRepository.findByIata(iata);
-
-        return routeRepository.findAllByDestinyCity(cityOpt.orElseThrow(RouteNotFoundException::new));
-    }
 }

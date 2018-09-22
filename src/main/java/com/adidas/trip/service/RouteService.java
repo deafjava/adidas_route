@@ -7,6 +7,4 @@ import java.util.List;
 public interface RouteService {
 
     List<Route> findAllByOriginCity(String iata);
-
-    List<Route> findAllByDestinyCity(String iata);
 }

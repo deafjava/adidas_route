@@ -18,6 +18,7 @@ CREATE TABLE state (
 CREATE TABLE city (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(1000) NOT NULL,
+    gmt TINYINT NOT NULL,
     state_id INT UNSIGNED NOT NULL,
     iata CHAR(3) NOT NULL UNIQUE,
     CONSTRAINT sc_fk
@@ -37,4 +38,16 @@ CREATE TABLE route (
     CONSTRAINT rdc_fk
     FOREIGN KEY(destiny_city_id)
     REFERENCES city(id)
+);
+
+CREATE TABLE connections (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    full_route_id INT UNSIGNED NOT NULL,
+    connection_route_id INT UNSIGNED NOT NULL,
+    CONSTRAINT cfr_fk
+    FOREIGN KEY(full_route_id)
+    REFERENCES route(id),
+    CONSTRAINT ccr_fk
+    FOREIGN KEY(connection_route_id)
+    REFERENCES route(id)
 );

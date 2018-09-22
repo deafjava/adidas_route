@@ -11,6 +11,7 @@ import java.util.List;
 
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.fail;
 
 
 @SpringBootTest
@@ -35,19 +36,7 @@ public class RouteServiceImplTest extends AbstractTestNGSpringContextTests {
     }
 
     @Test
-    public void happyWayDestinyTest() {
-        List<Route> routes = routeService.findAllByDestinyCity("MAD");
-
-        assertFalse(routes.isEmpty());
+    public void noRouteTest() {
+        fail();
     }
-
-    @Test
-    public void happyWayDestinyEmptyTest() {
-        List<Route> routes = routeService.findAllByDestinyCity("ZAZ");
-
-        assertTrue(routes.isEmpty());
-    }
-
-
-
 }

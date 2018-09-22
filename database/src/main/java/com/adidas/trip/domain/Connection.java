@@ -9,21 +9,21 @@ import javax.persistence.*;
 @Entity
 @Data
 @EqualsAndHashCode(of = "id")
-public class City {
+@Table(name = "connections")
+public class Connection {
 
     @Id
     @JsonIgnore
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true)
-    private String iata;
-
-    private String name;
-
-    private Integer gmt;
-
-    @JoinColumn(name = "state_id")
+    @JoinColumn(name = "full_route_id")
     @ManyToOne(fetch = FetchType.EAGER)
-    private State state;
+    @JsonIgnore
+    private Route fullRoute;
+
+    @JoinColumn(name = "connection_route_id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Route connectionRoute;
+
 }

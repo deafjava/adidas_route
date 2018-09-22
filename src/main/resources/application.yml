@@ -1,12 +1,12 @@
-flyway:
-  enabled: true
-
 spring:
   profiles: dev, default
   datasource:
-    url: jdbc:mysql://10.0.0.109:3319/od?verifyServerCertificate\\=false&useSSL\\=true&characterEncoding\\=UTF-8
+    url: jdbc:mysql://localhost:3319/od?verifyServerCertificate\\=false&useSSL\\=true&characterEncoding\\=UTF-8
     password: d4t4b4s3
     username: root
+  flyway:
+    enabled: true
+
 logging:
   level:
     root: INFO
@@ -16,11 +16,10 @@ server:
 
 ---
 
-flyway:
-  enabled: true
-
 spring:
   profiles: test
+  flyway:
+    enabled: true
   jpa:
     hibernate:
       ddl-auto: none
