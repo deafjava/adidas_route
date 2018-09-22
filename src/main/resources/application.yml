@@ -14,6 +14,10 @@ logging:
 server:
   port: 8081
 
+auth:
+  user: admin
+  password: adidas!
+
 ---
 
 spring:

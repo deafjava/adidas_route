@@ -1,18 +1,29 @@
 package com.adidas.trip.controller;
 
 import com.adidas.trip.exception.RouteNotFoundException;
-import org.springframework.http.HttpStatus;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ControllerAdvice
+@CrossOrigin(origins = "http://localhost:8082/")
 public class ErrorController {
 
     @ExceptionHandler(RouteNotFoundException.class)
-    @ResponseStatus(code = HttpStatus.UNPROCESSABLE_ENTITY, reason = "There is no route from or to with this iata code!")
-    public void noRouteError() {
+    public ResponseEntity<ResponseBodyError> noRouteError() {
 
+        return ResponseEntity
+                .unprocessableEntity()
+                .body(new ResponseBodyError("There is no route with this iata code!"));
+    }
+
+    @Data
+    @AllArgsConstructor
+    private static class ResponseBodyError {
+        private String cause;
     }
 
 }
