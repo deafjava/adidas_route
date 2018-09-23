@@ -1,6 +1,7 @@
 package com.adidas.trip.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
@@ -29,7 +30,7 @@ public class Route {
     @ManyToOne(fetch = FetchType.EAGER)
     private City destinyCity;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "fullRoute")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "fullRoute")
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private List<Connection> connections;
 
@@ -39,15 +40,13 @@ public class Route {
     @Column(name = "arrival_time")
     private LocalTime arrivalTime;
 
-//    @JsonGetter("departureTime")
-//    public LocalTime getDepartureTime() {
-//        LocalTime localTime = departureTime;
-//        return localTime.plusHours(originCity.getGmt());
-//    }
-//
-//    @JsonGetter("arrivalTime")
-//    public LocalTime getArrivalTime() {
-//        LocalTime localTime = arrivalTime;
-//        return localTime.plusHours(destinyCity.getGmt());
-//    }
+    @JsonGetter("departureTime")
+    public String getDepartureTime() {
+        return departureTime.toString();
+    }
+
+    @JsonGetter("arrivalTime")
+    public String getArrivalTime() {
+        return arrivalTime.toString();
+    }
 }

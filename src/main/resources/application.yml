@@ -1,22 +1,27 @@
 spring:
   profiles: dev, default
   datasource:
-    url: jdbc:mysql://192.168.3.14:3319/od?verifyServerCertificate\\=false&useSSL\\=true&characterEncoding\\=UTF-8
-    password: d4t4b4s3
-    username: root
+#    url: jdbc:mysql://192.168.3.14:3319/od?verifyServerCertificate\\=false&useSSL\\=true&characterEncoding\\=UTF-8
+#    password: d4t4b4s3
+#    username: adidas_fan
+    url: ${DB_URL:jdbc:h2:mem:test;MODE=MySQL;DB_CLOSE_ON_EXIT=FALSE}
+    driverClassName: ${JDBC_DRIVER:org.h2.Driver}
   flyway:
-    enabled: true
+    enabled: ${FLYWAY_ENABLE:true}
+
+cors:
+  url: ${CORS_URL:http://192.168.3.12:8082/}
 
 logging:
   level:
-    root: INFO
+    root: ${LOG_LEVEL:INFO}
 
 server:
-  port: 8081
+  port: ${SERVER_PORT:8081}
 
 auth:
-  user: admin
-  password: adidas!
+  user: ${SEC_USER:admin}
+  password: ${SEC_PW:adidas!}
 
 ---
 
@@ -34,3 +39,6 @@ spring:
 auth:
   user: admin
   password: adidas!
+
+cors:
+  url: ${CORS_URL:http://localhost:8082/}
