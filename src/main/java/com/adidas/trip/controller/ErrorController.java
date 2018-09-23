@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
-@CrossOrigin(origins = "http://localhost:8082/")
+@CrossOrigin(origins = "http://192.168.3.11:8082/")
 public class ErrorController {
 
     @ExceptionHandler(RouteNotFoundException.class)

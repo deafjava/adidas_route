@@ -1,7 +1,7 @@
 spring:
   profiles: dev, default
   datasource:
-    url: jdbc:mysql://localhost:3319/od?verifyServerCertificate\\=false&useSSL\\=true&characterEncoding\\=UTF-8
+    url: jdbc:mysql://192.168.3.14:3319/od?verifyServerCertificate\\=false&useSSL\\=true&characterEncoding\\=UTF-8
     password: d4t4b4s3
     username: root
   flyway:
@@ -30,3 +30,7 @@ spring:
   datasource:
     url: jdbc:h2:mem:test;MODE=MySQL;DB_CLOSE_ON_EXIT=FALSE
     driverClassName: org.h2.Driver
+
+auth:
+  user: admin
+  password: adidas!
