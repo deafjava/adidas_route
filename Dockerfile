@@ -10,5 +10,6 @@ ENV LOG_LEVEL INFO
 ENV SERVER_PORT 8081
 ENV SEC_USER admin
 ENV SEC_PW adidas!
+ENV URL_SPRING_CLOUD http://192.168.3.15:8088/eureka
 
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
