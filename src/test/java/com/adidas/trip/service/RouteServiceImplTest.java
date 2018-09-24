@@ -1,6 +1,7 @@
 package com.adidas.trip.service;
 
 import com.adidas.trip.domain.Route;
+import com.adidas.trip.exception.IataNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
@@ -21,21 +22,22 @@ public class RouteServiceImplTest extends AbstractTestNGSpringContextTests {
     private RouteService routeService;
 
     @Test
-    public void happyWayOriginTest() {
+    public void originExistsWithRoutesTest() {
         List<Route> routes = routeService.findAllByOriginCity("ZAZ");
 
         assertFalse(routes.isEmpty());
     }
 
     @Test
-    public void happyWayOriginEmptyTest() {
+    public void originExistsButNoRoutesTest() {
         List<Route> routes = routeService.findAllByOriginCity("DFW");
 
         assertTrue(routes.isEmpty());
     }
 
-    @Test
-    public void noRouteTest() {
-        //fail();
+    @Test(expectedExceptions = {IataNotFoundException.class})
+    public void originDoesntExistsTest() {
+        routeService.findAllByOriginCity("WHE");
+
     }
 }

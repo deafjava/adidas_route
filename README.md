@@ -1,17 +1,25 @@
-## ?. Why `gradle`?
+# Adidas Coding Challenge
 
+## Microservice Route
 
-## ?. Instructions to run the microservices locally with `docker`
+### Development
 
-To run, your machine must have [__Java 8__](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html), [__docker__](https://docs.docker.com/install/) and [__git__](https://git-scm.com/downloads) installed
+* Spring Boot
+* Java 8
+* Secured -  Basic HTTP Authentication
+* Eureka Client and Registered to be discovered
+* TestNG as Test Framework
+* Used H2 with MySQL as database for demonstration
 
-### ?.1 Create an isolated local network
+### Environment Variables
 
-Run the command: `docker network create --driver=bridge --subnet=192.168.3.0/24 --gateway=192.168.3.10 zaragoza_net`
+* `DB_URL` - full jdbc URL, such as `jdbc:<dbms>://<username>:<password>@<host>:<port>/<db_name>` - according to configuration you prepared
+* `JDBC_DRIVER` - such as `com.mysql.jdbc.Driver`
+* `FLYWAY_ENABLE` - accept `true` or `false` as values
+* `LOG_LEVEL` - Verbosity of Logging level
+* `SERVER_PORT`
+* `SEC_USER` - username to secure the API
+* `SEC_PW` - password to secure the API
+* `URL_SPRING_CLOUD` - URL to the Eureka Server
 
-### ?.2 Get the _routes_ microservice
-
-* Get the project: `git clone git@github.com:deafjava/adidas_route.git`
-* Go to the project root: `cd adidas_route/`
-* Build the project and generate docker image: `./gradlew build docker`
-* Run the microservice: `docker run -d --name adidas_routes --net=zaragoza_net --ip 192.168.3.20 -p 8081:8081 -t com.adidas/trip`
+See [application.yml](https://github.com/deafjava/adidas_route/blob/master/src/main/resources/application.yml)

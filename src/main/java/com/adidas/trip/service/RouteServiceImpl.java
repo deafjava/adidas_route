@@ -2,7 +2,7 @@ package com.adidas.trip.service;
 
 import com.adidas.trip.domain.City;
 import com.adidas.trip.domain.Route;
-import com.adidas.trip.exception.RouteNotFoundException;
+import com.adidas.trip.exception.IataNotFoundException;
 import com.adidas.trip.repository.CityRepository;
 import com.adidas.trip.repository.RouteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +27,6 @@ public class RouteServiceImpl implements RouteService {
 
         Optional<City> cityOpt = cityRepository.findByIata(iata);
 
-        return routeRepository.findAllByOriginCity(cityOpt.orElseThrow(RouteNotFoundException::new));
+        return routeRepository.findAllByOriginCity(cityOpt.orElseThrow(IataNotFoundException::new));
     }
 }

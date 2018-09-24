@@ -3,9 +3,8 @@ spring:
   application:
       name: routes-service
   datasource:
-#    url: jdbc:mysql://192.168.3.14:3319/od?verifyServerCertificate\\=false&useSSL\\=true&characterEncoding\\=UTF-8
-#    password: d4t4b4s3
-#    username: adidas_fan
+#    password: ??????
+#    username: a_user
     url: ${DB_URL:jdbc:h2:mem:test;MODE=MySQL;DB_CLOSE_ON_EXIT=FALSE}
     driverClassName: ${JDBC_DRIVER:org.h2.Driver}
   flyway:

@@ -13,5 +13,4 @@ public interface RouteRepository extends JpaRepository<Route, Long> {
 
     List<Route> findAllByOriginCity(City city);
 
-    List<Route> findAllByDestinyCity(City city);
 }
